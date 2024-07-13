@@ -1,5 +1,5 @@
 import { connectDB } from "@/util/database";
-import ReserveList from "./reserveList";
+import ReserveList from "./ReserveList";
 export default async function Status() {
   const client = await connectDB;
   const db = client.db("ax_cabinet");

@@ -30,9 +30,13 @@ export default function ReserveList({result}){
     function getReservationInfo(row, col) {
       const reservation = result.find(r => r.locationRow === row && r.locationCol === col);
       if (reservation) {
-        return `${reservation.name} (~${reservation.endDate})`;
+        return {
+          name: reservation.name,
+          stdate: `${reservation.startDate}~`,
+          endate:`${reservation.endDate}`
+        };
       }
-      return '';
+      return null;
     }
   
     return (
@@ -52,7 +56,11 @@ export default function ReserveList({result}){
                   {isReservedCell ? (
                     <>
                       {row}{colIndex + 1}
-                      <div className="reservation-info">{reservationInfo}</div>
+                      <div className="reservation-info">
+                        <div>{reservationInfo.name}</div>
+                        <div>{reservationInfo.stdate}</div>
+                        <div>{reservationInfo.endate}</div>
+                      </div>
                     </>
                   ) : (
                     <Link href={`/reserving/${row}${colIndex + 1}`} className="linkto">
