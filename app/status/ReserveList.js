@@ -1,39 +1,44 @@
 'use client'
 import Link from "next/link";
-export default function ReserveList({result}){
+import { useEffect, useState } from "react";
+
+export default function ReserveList() {
+    const [data, setData] = useState([]); // 초기 상태는 빈 배열로 설정
     const rows = ['A', 'B', 'C', 'D', 'E'];
-    const currentDate = new Date();
+  
+    useEffect(() => {
+        async function fetchData() {
+            const response = await fetch('/api/post/get'); // /api/page 엔드포인트에서 데이터를 가져옵니다.
+            const result = await response.json();
+            setData(result); // 가져온 데이터를 상태로 설정합니다.
+        }
+        fetchData();
+    }, []);
   
     function parseDate(dateString) {
       const [year, month, day] = dateString.split('-').map(Number);
-      return new Date(year, month - 1, day);  // JavaScript의 월은 0부터 시작하므로 1을 빼줍니다.
+      return new Date(year, month - 1, day);
     }
     
     function isReserved(row, col) {
-      const reservation = result.find(r => r.locationRow === row && r.locationCol === col);
+      const reservation = data.find(r => r.locationRow === row && r.locationCol === col);
       if (reservation) {
         const startDate = parseDate(reservation.startDate);
         const endDate = parseDate(reservation.endDate);
         const currentDate = new Date();
         currentDate.setHours(0, 0, 0, 0);
-        if(endDate<=currentDate){
-            fetch('/api/post/delete',{
-                method:'DELETE',
-                body:reservation._id
-            })
-        }
         return currentDate >= startDate && currentDate <= endDate;
       }
       return false;
     }
   
     function getReservationInfo(row, col) {
-      const reservation = result.find(r => r.locationRow === row && r.locationCol === col);
+      const reservation = data.find(r => r.locationRow === row && r.locationCol === col);
       if (reservation) {
         return {
           name: reservation.name,
           stdate: `${reservation.startDate}~`,
-          endate:`${reservation.endDate}`
+          endate: `${reservation.endDate}`
         };
       }
       return null;
