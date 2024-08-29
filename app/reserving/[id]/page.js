@@ -15,15 +15,15 @@ export default async function Reserving({ params }) {
   if (result) {
     return (
       <div className="reserving-container">
-        <h2 className="title">이미 예약된 사물함입니다.</h2>
-        <p>예약 정보: {JSON.stringify(result)}</p>
+        <h2 className="title-status">이미 예약된 사물함입니다.</h2>
+        <p className="sub-title">예약자: {result.name}</p>
       </div>
     );
   }
 
   return (
     <div className="reserving-container">
-      <h2 className="title">예약하기 ({row}{col})</h2>
+      <h2 className="title-status">예약하기 ({row}{col})</h2>
       <ReservationForm row={row} col={col} />
     </div>
   );

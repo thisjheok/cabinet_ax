@@ -41,8 +41,10 @@ export default function ReserveList({result}){
   
     return (
       <div>
-        <h2 className="title">사물함 예약 현황</h2>
-        <div className="startBtn">예약되지 않은 사물함 번호를 눌러 예약해주세요!</div>
+        <div className="title-box">
+          <h2 className="title-status">사물함 예약 현황</h2>
+          <h4 className="sub-title-status">예약할 사물함 번호를 눌러 예약해주세요!</h4>
+        </div>
         <div className="locker-grid">
           {rows.flatMap((row, rowIndex) =>
             Array(5).fill(null).map((_, colIndex) => {

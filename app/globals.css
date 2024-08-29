@@ -1,57 +1,102 @@
 body{
   margin: 0;
-  background: #303030;
-  color:white;
+  background: #ffffff; 
+  overflow-x: hidden;
+}
+
+.title-status{
+  margin-top: 50px;
+  font-size: 1.75rem;
+  padding: 0 10px;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 10px;
+  color:rgb(57, 57, 57);
 }
 
 .title{
   margin-top: 50px;
+  font-size: 1.75rem;
+  padding: 0 10px;
+  width: 100%;
   text-align: center;
+  margin-bottom: 10px;
+  color:rgb(95, 167, 238);
+}
+
+.sub-title-status{
+  margin:0;
+  margin-bottom: 10px;
+  padding: 0 10px;
+  width: 100%;
+  text-align: center;
+  color:rgb(95, 167, 238);
 }
 
 .sub-title{
-  margin-top: 10px;
+  margin:0;
+  margin-bottom: 10px;
+  padding: 0 10px;
+  width: 100%;
   text-align: center;
+  color:rgb(95, 167, 238);
 }
 
-.startBtn{
-  text-decoration-line: none;
+.title-box{
+  display: flex;  /* Flexbox 사용 */
+  flex-direction: column;  /* 세로 정렬 */
+  align-items: center;  /* 자식 요소를 가운데 정렬 */
+  justify-content: center;  /* 수직 방향으로도 중앙에 정렬 */
+  margin: 0;
   text-align: center;
+  width: 100%;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+
+.startBtn{
+  text-align: center;
+  width: 90%;
+  max-width: 300px;
+  margin: 0 auto; /* 가운데 정렬 */
 }
 
 .locker-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(5, 1fr); /* 기본 5열 설정 */
   gap: 10px;
-  max-width: 500px;
-  margin: 20px auto;
-  padding: 0 15px; /* 좌우에 15px의 패딩 추가 */
-  color:#303030;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 90%;
 }
 
 .locker-cell {
-  aspect-ratio: 1 / 1;
-  background-color: white;
-  border: 1px solid #ccc;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 18px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
 .locker-cell.reserved {
-  background-color: #d16363;
+  background-color: #929292;
   color: white;
 }
 .locker-cell.non-reserved{
-  background-color: rgba(82, 253, 94, 0.796);
+  background-color: rgba(76, 169, 231, 0.647);
   color: white;
 }
 .reservation-info {
-  font-size: 0.8em;
-  margin-top: 5px;
+  margin-top: 10px;
+  font-size: 14px;
 }
-
-.linkto{
-  text-decoration-line: none;
-  color: #303030;
+.linkto {
+  text-decoration: none;
+  color: #000;
+  display: block;
+  height: 100%;
 }
 
 .reservingBtn {
@@ -59,7 +104,7 @@ body{
   width: fit-content;
   margin: 20px auto;
   padding: 10px 20px;
-  background-color: #4CAF50;
+  background-color: rgba(62, 155, 247, 0.796);
   color: white;
   text-align: center;
   text-decoration: none;
@@ -94,14 +139,15 @@ body{
 }
 
 .startBtn div:hover {
-  background-color: #1976D2; /* 호버 시 약간 어두운 파란색 */
+  background-color: #133e6a; /* 호버 시 약간 어두운 파란색 */
 }
 
 .reserving-container {
+  margin-bottom: 100px;
   max-width: 300px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #4c4c4c;
+  background-color: #a3d3f7;
   color: white;
   border-radius: 8px;
 }
@@ -142,7 +188,7 @@ input[type="date"] {
 
 button[type="submit"] {
   padding: 10px;
-  background-color: #4CAF50;
+  background-color: rgba(62, 173, 247, 0.796);
   color: white;
   border: none;
   border-radius: 4px;
@@ -151,11 +197,64 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-  background-color: #45a049;
+  background-color: rgba(52, 147, 211, 0.796);
+}
+
+.TableImg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.TableImg img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  
+}
+
+.maincontainer {
+  max-width: 100%;
+  overflow-x: hidden;
+  padding: 20px;
+  box-sizing: border-box; /* 패딩을 포함하여 요소의 너비를 계산 */
 }
 
 .error-message{
   margin: 0 auto;
   color: rgb(255, 53, 53);
   font-weight: bold;
+}
+
+/* 모바일 대응 */
+@media (max-width: 768px) {
+  .locker-grid {
+    grid-template-columns: repeat(2, 1fr); /* 모바일에서는 2열로 변경 */
+    gap: 15px;
+  }
+
+  .locker-cell {
+    padding: 20px;
+    font-size: 16px;
+  }
+
+  .reservation-info {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .locker-grid {
+    grid-template-columns: repeat(1, 1fr); /* 작은 모바일 화면에서는 1열로 변경 */
+  }
+
+  .locker-cell {
+    padding: 15px;
+    font-size: 14px;
+  }
+
+  .reservation-info {
+    font-size: 12px;
+  }
 }
