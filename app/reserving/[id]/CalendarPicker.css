@@ -1,0 +1,100 @@
+.calendar-picker {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    color:rgb(57, 57, 57);
+    margin-bottom: 40px;
+    margin-top: 20px;
+  }
+  
+  .calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .calendar-header button {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  
+  .calendar-header h2 {
+    margin: 0;
+    font-size: 18px;
+  }
+  
+  .calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .calendar-day-header {
+    text-align: center;
+    padding: 5px;
+    font-weight: bold;
+    font-size: 14px;
+  }
+  
+  .calendar-body {
+    padding: 10px;
+  }
+  
+  .calendar-week {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+  }
+  
+  .calendar-day {
+    text-align: center;
+    padding: 5px;
+    cursor: pointer;
+  }
+  
+  .calendar-day:hover {
+    background-color: #f0f0f0;
+  }
+  
+  .calendar-day.disabled {
+    color: #ccc;
+  }
+  
+  .calendar-day.today {
+    background-color: #fffacd;
+  }
+  
+  .calendar-day.in-range {
+    background-color: #8ec6fb !important ;  /* 파란색 */
+    color: #000;
+  }
+  
+  .calendar-day.available {
+    background-color: #e6ffe6;  /* 연한 녹색 */
+  }
+  
+  .calendar-day.unavailable {
+    background-color: #e3e3e3;  /* 연한 빨간색 */
+    cursor: not-allowed;
+  }
+  
+  .calendar-footer {
+    padding: 10px;
+    background-color: #ffffff;
+    border-top: 1px solid #ccc;
+    font-size: 14px;
+  }
+  
+  .calendar-footer p {
+    margin: 5px 0;
+  }
