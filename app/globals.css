@@ -34,6 +34,14 @@ body{
   color:#fdeacd;
 }
 
+.sub-title-reserving{
+  margin:0;
+  margin-bottom: 10px;
+  padding: 0 10px;
+  width: 100%;
+  text-align: center;
+  color:#66b1fd;
+}
 
 .sub-title-status{
   margin:0;

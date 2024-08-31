@@ -32,6 +32,7 @@ export default async function Reserving({ params }) {
     <div>
       <div className="reserving-container">
         <h2 className="title-reserving">예약하기 ({row}{col})</h2>
+        <p className="sub-title-reserving">날짜를 눌러 예약해보세요!</p>
         <ReservationForm row={row} col={col} reservations={result}/>
       </div>
     </div>
