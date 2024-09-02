@@ -238,10 +238,10 @@ button[type="submit"]:hover {
 }
 
 .TableImg img {
-  max-width: 100%;
+  max-width: 90%;  /* 최대 너비를 90%로 변경 */
   height: auto;
-  object-fit: cover;
-  
+  object-fit: contain;  /* cover 대신 contain 사용 */
+  width: 400px;  /* 기본 너비를 400px로 변경 */
 }
 
 .maincontainer {
@@ -272,6 +272,10 @@ button[type="submit"]:hover {
   .reservation-info {
     font-size: 12px;
   }
+
+  .TableImg img {
+    width: 300px;  /* 모바일 화면에서의 너비를 300px로 설정 */
+  }
 }
 
 @media (max-width: 480px) {
@@ -286,5 +290,9 @@ button[type="submit"]:hover {
 
   .reservation-info {
     font-size: 12px;
+  }
+
+  .TableImg img {
+    width: 250px;  /* 더 작은 화면에서의 너비를 250px로 설정 */
   }
 }

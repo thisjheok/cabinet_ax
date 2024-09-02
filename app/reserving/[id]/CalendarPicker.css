@@ -83,8 +83,13 @@
     background-color: #e6ffe6;  /* 연한 녹색 */
   }
   
+  .calendar-day.highlighted {
+    background-color: #e985ff !important; /* Gold color for highlighted dates */
+    color: #000;
+  }
+  
   .calendar-day.unavailable {
-    background-color: #e3e3e3;  /* 연한 빨간색 */
+    background-color: #e3e3e3;
     cursor: not-allowed;
   }
   

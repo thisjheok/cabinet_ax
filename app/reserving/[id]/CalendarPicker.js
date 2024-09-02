@@ -20,6 +20,7 @@ const CalendarPicker = ({ unavailableDates, setStartDate, setEndDate, reservatio
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [localStartDate, setLocalStartDate] = useState(null);
   const [localEndDate, setLocalEndDate] = useState(null);
+  const [highlightedReservation, setHighlightedReservation] = useState(null);
 
   useEffect(() => {
     setStartDate(localStartDate);
@@ -41,8 +42,10 @@ const CalendarPicker = ({ unavailableDates, setStartDate, setEndDate, reservatio
 
     if (clickedReservation) {
       onReservationClick(clickedReservation);
+      setHighlightedReservation(clickedReservation);
       return;
     }
+    setHighlightedReservation(null);
 
     if (unavailableDates.some(range => 
       isWithinInterval(day, { 
@@ -136,6 +139,10 @@ const CalendarPicker = ({ unavailableDates, setStartDate, setEndDate, reservatio
             end: parseLocalDate(reservation.endDate) 
           })
         );
+        const isHighlighted = highlightedReservation && isWithinInterval(cloneDay, {
+          start: parseLocalDate(highlightedReservation.startDate),
+          end: parseLocalDate(highlightedReservation.endDate)
+        });
 
         let dayClass = 'calendar-day';
         if (!isSameMonth(day, monthStart)) dayClass += ' disabled';
@@ -144,6 +151,7 @@ const CalendarPicker = ({ unavailableDates, setStartDate, setEndDate, reservatio
         if (isStartDate || isEndDate) dayClass += ' selected';
         if (isUnavailable || isReserved) dayClass += ' unavailable';
         else dayClass += ' available';
+        if (isHighlighted) dayClass += ' highlighted';
 
         days.push(
           <div

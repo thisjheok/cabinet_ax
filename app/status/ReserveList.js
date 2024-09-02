@@ -3,19 +3,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function ReserveList() {
-    const [data, setData] = useState([]); // 초기 상태는 빈 배열로 설정
     const rows = ['A', 'B', 'C', 'D', 'E'];
-  
-    useEffect(() => {
-        async function fetchData() {
-            const response = await fetch('/api/post/get'); // /api/page 엔드포인트에서 데이터를 가져옵니다.
-            const result = await response.json();
-            setData(result); // 가져온 데이터를 상태로 설정합니다.
-        }
-        fetchData();
-    }, []);
-
-    
   
     return (
       <div>
